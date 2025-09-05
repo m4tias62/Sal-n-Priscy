@@ -154,3 +154,47 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Salón Priscy. Todos los derechos reservados.</small>
+      <a href="#hero" class="back-to-top">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="fab-whatsapp"
+     href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
+     target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
+    <span aria-hidden="true">💬</span>
+  </a>
+
+  <script>
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú responsive accesible
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+        toggle.setAttribute('aria-expanded', !expanded);
+        menu.classList.toggle('open');
+      });
+    }
+
+    // Suavizar scroll en enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
