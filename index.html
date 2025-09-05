@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peluquería — Reserva tu hora</title>
+  <meta name="description" content="Servicios de peluquería en tu comuna. Reserva tu hora online.">
+  <meta property="og:title" content="Peluquería — Reserva tu hora">
+  <meta property="og:description" content="Servicios de peluquería. Galería de trabajos y agendamiento fácil.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta name="theme-color" content="#0a84ff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="favicon.svg" alt="" width="28" height="28" aria-hidden="true">
+        <span>Peluquería</span>
+      </a>
+      <nav aria-label="principal">
+        <ul class="nav-list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Trabajos</a></li>
+          <li><a href="#reservar" class="btn btn--sm btn--primary">Reservar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <h1>Color y corte profesional en tu barrio</h1>
+        <p>Agenda online en 3 pasos. Atención cercana, resultados de alto nivel.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--lg" href="#reservar">Reservar ahora</a>
+          <a class="btn btn--ghost btn--lg" href="#galeria">Ver trabajos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2>Servicios</h2>
+        <ul class="services">
+          <li><strong>Corte</strong> — 45 min</li>
+          <li><strong>Coloración</strong> — 90 min</li>
+          <li><strong>Balayage</strong> — 150 min</li>
+          <li><strong>Peinado</strong> — 45 min</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="galeria" class="section">
+      <div class="container">
+        <h2>Trabajos recientes</h2>
+        <div class="gallery" role="list">
+          <figure class="card" role="listitem">
+            <img src="https://picsum.photos/seed/1/800/600" alt="Balayage castaño claro en cabello largo — ejemplo">
+            <figcaption>Balayage — ejemplo</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="https://picsum.photos/seed/2/800/600" alt="Corte bob recto — ejemplo">
+            <figcaption>Corte bob — ejemplo</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="https://picsum.photos/seed/3/800/600" alt="Coloración rubio cálido — ejemplo">
+            <figcaption>Coloración — ejemplo</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="https://picsum.photos/seed/4/800/600" alt="Peinado ondas suaves — ejemplo">
+            <figcaption>Peinado — ejemplo</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservar" class="section">
+      <div class="container">
+        <h2>Reserva tu hora</h2>
+        <p>Elige la fecha y horario que más te acomode.</p>
+
+        <!-- Calendly inline widget begin -->
+        <!-- Reemplaza TU_USUARIO y TU_EVENTO por tu enlace real de Calendly -->
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/TU_USUARIO/TU_EVENTO"
+             style="min-width:320px;height:800px;"></div>
+        <script type="text/javascript"
+                src="https://assets.calendly.com/assets/external/widget.js"
+                async></script>
+        <!-- Calendly inline widget end -->
+
+        <!-- Alternativa: si usas Fresha o AgendaPro, elimina el bloque de arriba y deja este botón -->
+        <!-- <p><a class="btn btn--primary btn--lg" href="https://link-a-tu-perfil-de-reservas" target="_blank" rel="noopener">Reservar en línea</a></p> -->
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2>Contacto</h2>
+        <ul class="contact">
+          <li><a href="https://wa.me/569XXXXXXXX?text=Hola,%20quiero%20agendar%20una%20hora" class="btn btn--whatsapp" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">WhatsApp</a></li>
+          <li><a href="https://instagram.com/tu_instagram" target="_blank" rel="noopener" aria-label="Ir a Instagram">Instagram</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Peluquería. Todos los derechos reservados.</small>
+      <a href="#hero" class="back-to-top">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Año automático y mejor enfoque accesible para "volver arriba"
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
