@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salón Priscy — Color, Corte y Estilo</title>
+  <meta name="description" content="Salón de peluquería. Trabajos reales y reserva por WhatsApp.">
+  <meta name="theme-color" content="#6b21a8">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Ir al inicio">
+        <img src="logo.svg" alt="" width="28" height="28" aria-hidden="true">
+        <span class="brand__name">Salón Priscy</span>
+      </a>
+
+      <nav class="main-nav" aria-label="principal">
+        <button class="nav-toggle" aria-controls="menu" aria-expanded="false">
+          <span class="sr-only">Abrir menú</span>
+          ☰
+        </button>
+        <ul id="menu" class="nav-list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Trabajos</a></li>
+          <li><a href="#reservar" class="btn btn--sm btn--accent">Reservar</a></li>
+          <li><a href="https://instagram.com/TU_INSTAGRAM" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-label="Portada">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <h1><span class="highlight">Color y corte profesional</span> en tu barrio</h1>
+        <p class="lead">Reserva por WhatsApp en 3 pasos. Atención cercana, resultados de alto nivel.</p>
+        <div class="cta-row">
+          <a class="btn btn--whatsapp btn--lg"
+             href="https://wa.me/569XXXXXXXX?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
+            Agendar por WhatsApp
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#galeria">Ver trabajos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section" aria-labelledby="servicios-title">
+      <div class="container">
+        <h2 id="servicios-title">Servicios</h2>
+        <ul class="services" role="list">
+          <li class="service-card">
+            <h3>Corte</h3>
+            <p>45 min · Asesoría de estilo incluida.</p>
+          </li>
+          <li class="service-card">
+            <h3>Coloración</h3>
+            <p>90 min · Tonos a medida.</p>
+          </li>
+          <li class="service-card">
+            <h3>Balayage</h3>
+            <p>150 min · Transiciones suaves y luminosas.</p>
+          </li>
+          <li class="service-card">
+            <h3>Peinado</h3>
+            <p>45 min · Ondas, liso o recogidos.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="section" aria-labelledby="galeria-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="galeria-title">Trabajos recientes</h2>
+          <p class="muted">Resultados reales. Más en <a href="https://instagram.com/TU_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>.</p>
+        </div>
+        <div class="gallery" role="list">
+          <!-- Reemplaza las imágenes por las tuyas en /img y actualiza los alt -->
+          <figure class="card" role="listitem">
+            <img loading="lazy" src="https://picsum.photos/seed/111/800/600" alt="Balayage castaño claro — antes y después, cabello largo">
+            <figcaption>Balayage — antes/después</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img loading="lazy" src="https://picsum.photos/seed/112/800/600" alt="Corte bob recto en cabello liso">
+            <figcaption>Corte bob</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img loading="lazy" src="https://picsum.photos/seed/113/800/600" alt="Coloración rubio cálido, media melena">
+            <figcaption>Coloración rubio cálido</figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img loading="lazy" src="https://picsum.photos/seed/114/800/600" alt="Peinado de ondas suaves para evento">
+            <figcaption>Peinado ondas suaves</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAR -->
+    <section id="reservar" class="section section--accent" aria-labelledby="reservar-title">
+      <div class="container reservar-inner">
+        <div class="reservar-copy">
+          <h2 id="reservar-title">Reserva por WhatsApp</h2>
+          <ol class="steps">
+            <li>Elige el servicio.</li>
+            <li>Indica fecha y horario que te acomoden.</li>
+            <li>Te confirmamos en minutos.</li>
+          </ol>
+          <a class="btn btn--whatsapp btn--xl"
+             href="https://wa.me/569XXXXXXXX?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
+            Agendar ahora en WhatsApp
+          </a>
+        </div>
+        <div class="reservar-visual" aria-hidden="true">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section" aria-labelledby="contacto-title">
+      <div class="container">
+        <h2 id="contacto-title">Contacto</h2>
+        <ul class="contact">
+          <li>
+            <a class="btn btn--whatsapp"
+               href="https://wa.me/569XXXXXXXX?text=Hola%20Priscy%2C%20quiero%20hacer%20una%20consulta."
+               target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a class="btn btn--ghost"
+               href="https://instagram.com/TU_INSTAGRAM"
+               target="_blank" rel="noopener" aria-label="Ir a Instagram">
+              Instagram
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Salón Priscy. Todos los derechos reservados.</small>
+      <a href="#hero" class="back-to-top">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <a class="fab-whatsapp" href="https://wa.me/569XXXXXXXX?text=Hola%20Priscy%2C%20quisiera%20agendar."
+     target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
+    <span aria-hidden="true">💬</span>
+  </a>
+
+  <script>
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú responsive accesible
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+        toggle.setAttribute('aria-expanded', !expanded);
+        menu.classList.toggle('open');
+      });
+    }
+
+    // Suavizar scroll en enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
