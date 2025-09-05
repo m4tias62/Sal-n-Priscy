@@ -8,6 +8,12 @@
   <meta name="theme-color" content="#6b21a8">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
+
+  <!-- Tipografías (Manrope + Fraunces) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -67,7 +73,10 @@
     <section id="servicios" class="section" aria-labelledby="servicios-title">
       <div class="container">
         <h2 id="servicios-title">Servicios y trabajos</h2>
-        <p class="muted">Cada tarjeta muestra un trabajo real del servicio. Toca para agendar al WhatsApp con el servicio prellenado.</p>
+        <p class="muted">
+          Si quieres ver más trabajos visita nuestro
+          <a href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener">instagram</a>.
+        </p>
 
         <div class="work-grid" role="list">
           <!-- CORTE -->
@@ -99,7 +108,7 @@
              href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20Balayage%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
              target="_blank" rel="noopener">
             <img loading="lazy" src="https://picsum.photos/seed/balayage/800/600"
-                 alt="Balayage castaño claro — resultado luminoso en cabello largo">
+                 alt="Balayage castaño claro con acabado luminoso en cabello largo">
             <div class="work-card__meta">
               <h3 class="work-card__title">Balayage</h3>
               <p class="work-card__desc">150 min · Transiciones suaves y luminosas.</p>
@@ -145,47 +154,3 @@
       </div>
     </section>
   </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <small>© <span id="year"></span> Salón Priscy. Todos los derechos reservados.</small>
-      <a href="#hero" class="back-to-top">Volver arriba ↑</a>
-    </div>
-  </footer>
-
-  <!-- Botón flotante de WhatsApp -->
-  <a class="fab-whatsapp"
-     href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
-     target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
-    <span aria-hidden="true">💬</span>
-  </a>
-
-  <script>
-    // Año automático
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Menú responsive accesible
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.getElementById('menu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
-        toggle.setAttribute('aria-expanded', !expanded);
-        menu.classList.toggle('open');
-      });
-    }
-
-    // Suavizar scroll en enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
