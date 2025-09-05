@@ -28,7 +28,6 @@
         </button>
         <ul id="menu" class="nav-list">
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#galeria">Trabajos</a></li>
           <li>
             <a
               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20una%20hora."
@@ -36,7 +35,6 @@
               Reservar
             </a>
           </li>
-          <li><a href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </nav>
     </div>
@@ -56,61 +54,69 @@
             target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
             Agendar por WhatsApp
           </a>
-          <a class="btn btn--ghost btn--lg" href="#galeria">Ver trabajos</a>
+          <a class="btn btn--instagram btn--lg"
+             href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener"
+             aria-label="Ver trabajos en Instagram">
+            Instagram
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- SERVICIOS + TRABAJOS (unificados) -->
     <section id="servicios" class="section" aria-labelledby="servicios-title">
       <div class="container">
-        <h2 id="servicios-title">Servicios</h2>
-        <ul class="services" role="list">
-          <li class="service-card">
-            <h3>Corte</h3>
-            <p>45 min · Asesoría de estilo incluida.</p>
-          </li>
-          <li class="service-card">
-            <h3>Coloración</h3>
-            <p>90 min · Tonos a medida.</p>
-          </li>
-          <li class="service-card">
-            <h3>Balayage</h3>
-            <p>150 min · Transiciones suaves y luminosas.</p>
-          </li>
-          <li class="service-card">
-            <h3>Peinado</h3>
-            <p>45 min · Ondas, liso o recogidos.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
+        <h2 id="servicios-title">Servicios y trabajos</h2>
+        <p class="muted">Cada tarjeta muestra un trabajo real del servicio. Toca para agendar al WhatsApp con el servicio prellenado.</p>
 
-    <!-- GALERÍA -->
-    <section id="galeria" class="section" aria-labelledby="galeria-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="galeria-title">Trabajos recientes</h2>
-          <p class="muted">Resultados reales. Más en <a href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener">Instagram</a>.</p>
-        </div>
-        <div class="gallery" role="list">
-          <!-- Reemplaza las imágenes por las tuyas en /img y actualiza los alt -->
-          <figure class="card" role="listitem">
-            <img loading="lazy" src="https://picsum.photos/seed/111/800/600" alt="Balayage castaño claro — antes y después, cabello largo">
-            <figcaption>Balayage — antes/después</figcaption>
-          </figure>
-          <figure class="card" role="listitem">
-            <img loading="lazy" src="https://picsum.photos/seed/112/800/600" alt="Corte bob recto en cabello liso">
-            <figcaption>Corte bob</figcaption>
-          </figure>
-          <figure class="card" role="listitem">
-            <img loading="lazy" src="https://picsum.photos/seed/113/800/600" alt="Coloración rubio cálido, media melena">
-            <figcaption>Coloración rubio cálido</figcaption>
-          </figure>
-          <figure class="card" role="listitem">
-            <img loading="lazy" src="https://picsum.photos/seed/114/800/600" alt="Peinado de ondas suaves para evento">
-            <figcaption>Peinado ondas suaves</figcaption>
-          </figure>
+        <div class="work-grid" role="list">
+          <!-- CORTE -->
+          <a class="work-card" role="listitem"
+             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20Corte%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener">
+            <img loading="lazy" src="https://picsum.photos/seed/corte/800/600"
+                 alt="Corte estilo bob recto en cabello liso">
+            <div class="work-card__meta">
+              <h3 class="work-card__title">Corte</h3>
+              <p class="work-card__desc">45 min · Asesoría de estilo incluida.</p>
+            </div>
+          </a>
+
+          <!-- COLORACIÓN -->
+          <a class="work-card" role="listitem"
+             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20Coloraci%C3%B3n%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener">
+            <img loading="lazy" src="https://picsum.photos/seed/color/800/600"
+                 alt="Coloración rubio cálido en media melena">
+            <div class="work-card__meta">
+              <h3 class="work-card__title">Coloración</h3>
+              <p class="work-card__desc">90 min · Tonos a medida.</p>
+            </div>
+          </a>
+
+          <!-- BALAYAGE -->
+          <a class="work-card" role="listitem"
+             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20Balayage%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener">
+            <img loading="lazy" src="https://picsum.photos/seed/balayage/800/600"
+                 alt="Balayage castaño claro — resultado luminoso en cabello largo">
+            <div class="work-card__meta">
+              <h3 class="work-card__title">Balayage</h3>
+              <p class="work-card__desc">150 min · Transiciones suaves y luminosas.</p>
+            </div>
+          </a>
+
+          <!-- PEINADO -->
+          <a class="work-card" role="listitem"
+             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20Peinado%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%20Mi%20nombre%20es%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener">
+            <img loading="lazy" src="https://picsum.photos/seed/peinado/800/600"
+                 alt="Peinado de ondas suaves para evento">
+            <div class="work-card__meta">
+              <h3 class="work-card__title">Peinado</h3>
+              <p class="work-card__desc">45 min · Ondas, liso o recogidos.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -136,29 +142,6 @@
           <div class="blob b1"></div>
           <div class="blob b2"></div>
         </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="section" aria-labelledby="contacto-title">
-      <div class="container">
-        <h2 id="contacto-title">Contacto</h2>
-        <ul class="contact">
-          <li>
-            <a
-              class="btn btn--whatsapp"
-              href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20hacer%20una%20consulta."
-              target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-              WhatsApp
-            </a>
-          </li>
-          <li>
-            <a class="btn btn--ghost" href="https://www.instagram.com/salon_priscy/"
-               target="_blank" rel="noopener" aria-label="Ir a Instagram">
-              Instagram
-            </a>
-          </li>
-        </ul>
       </div>
     </section>
   </main>
