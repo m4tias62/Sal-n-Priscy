@@ -17,13 +17,16 @@
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Cargador de imágenes con múltiples fallbacks (.jpg/.jpeg, con/sin tildes, NFC/NFD) -->
+  <!-- Fallbacks de imagen (.jpg/.jpeg, con/sin tildes, NFC/NFD) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const loadSequential = (img, list) => {
         const seen = new Set(), variants = [];
-        list.forEach(p => [p, p.normalize('NFD'), p.normalize('NFC')].forEach(v => { if(!seen.has(v)){ seen.add(v); variants.push(v);} }));
-        let i = 0; const tryNext = () => { if (i < variants.length){ img.onerror = tryNext; img.src = variants[i++]; } };
+        list.forEach(p => [p, p.normalize('NFD'), p.normalize('NFC')].forEach(v => {
+          if(!seen.has(v)){ seen.add(v); variants.push(v); }
+        }));
+        let i = 0;
+        const tryNext = () => { if (i < variants.length){ img.onerror = tryNext; img.src = variants[i++]; } };
         tryNext();
       };
       document.querySelectorAll('img[data-sources]').forEach(img => {
@@ -37,6 +40,7 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
+      <!-- Solo logo (grande) -->
       <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
@@ -85,110 +89,109 @@
 
     <!-- SERVICIOS + TRABAJOS -->
     <section id="servicios" class="section" aria-labelledby="servicios-title">
-  <div class="container">
-    <h2 id="servicios-title">Servicios y trabajos</h2>
-    <p class="muted">
-      Si quieres ver más trabajos visita nuestro
-      <a href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener">instagram</a>.
-    </p>
+      <div class="container">
+        <h2 id="servicios-title">Servicios y trabajos</h2>
+        <p class="muted">
+          Si quieres ver más trabajos visita nuestro
+          <a href="https://www.instagram.com/salon_priscy/" target="_blank" rel="noopener">instagram</a>.
+        </p>
 
-    <div class="work-grid" role="list">
-      <!-- CORTES -->
-      <article class="work-card" role="listitem" tabindex="0">
-        <figure class="work-media skeleton">
-          <img alt="Corte de cabello — terminación pulida en capas largas"
-               loading="lazy"
-               data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
-        </figure>
-        <div class="work-overlay">
-          <div class="work-text">
-            <h3 class="work-title">Cortes</h3>
-            <p class="work-sub">20 a 30 minutos</p>
-          </div>
-        </div>
-        <div class="cta-bar">
-          <a class="btn btn--rose btn--block"
-             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-             target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
-             Agendar
-          </a>
-        </div>
-      </article>
+        <div class="work-grid" role="list">
+          <!-- CORTES -->
+          <article class="work-card" role="listitem" tabindex="0">
+            <figure class="work-media skeleton">
+              <img alt="Corte de cabello — terminación pulida en capas largas"
+                   loading="lazy"
+                   data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
+            </figure>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Cortes</h3>
+                <p class="work-sub">20 a 30 minutos</p>
+              </div>
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
+                 Agendar
+              </a>
+            </div>
+          </article>
 
-      <!-- COLORACIÓN E HIDRATACIÓN -->
-      <article class="work-card" role="listitem" tabindex="0">
-        <figure class="work-media skeleton">
-          <img alt="Coloración e hidratación — brillo y suavidad"
-               loading="lazy"
-               data-sources='[
-                "img/coloracion-hidratacion.jpg",
-                "img/coloracion-hidratacion.jpeg",
-                "img/coloración e hidratación.jpg",
-                "img/coloración e hidratación.jpeg"
-               ]'>
-        </figure>
-        <div class="work-overlay">
-          <div class="work-text">
-            <h3 class="work-title one-line">Coloración e hidratación</h3>
-            <p class="work-sub">2 horas aproximadamente</p>
-          </div>
-        </div>
-        <div class="cta-bar">
-          <a class="btn btn--rose btn--block"
-             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-             target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
-             Agendar
-          </a>
-        </div>
-      </article>
+          <!-- COLORACIÓN E HIDRATACIÓN -->
+          <article class="work-card" role="listitem" tabindex="0">
+            <figure class="work-media skeleton">
+              <img alt="Coloración e hidratación — brillo y suavidad"
+                   loading="lazy"
+                   data-sources='[
+                    "img/coloracion-hidratacion.jpg",
+                    "img/coloracion-hidratacion.jpeg",
+                    "img/coloración e hidratación.jpg",
+                    "img/coloración e hidratación.jpeg"
+                   ]'>
+            </figure>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title one-line">Coloración e hidratación</h3>
+                <p class="work-sub">2 horas aproximadamente</p>
+              </div>
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
+                 Agendar
+              </a>
+            </div>
+          </article>
 
-      <!-- BALAYAGE -->
-      <article class="work-card" role="listitem" tabindex="0">
-        <figure class="work-media skeleton">
-          <img alt="Balayage rubio — ondas suaves en cabello largo"
-               loading="lazy"
-               data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
-        </figure>
-        <div class="work-overlay">
-          <div class="work-text">
-            <h3 class="work-title">Balayage</h3>
-            <p class="work-sub">5–6 horas aproximadamente</p>
-          </div>
-        </div>
-        <div class="cta-bar">
-          <a class="btn btn--rose btn--block"
-             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-             target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
-             Agendar
-          </a>
-        </div>
-      </article>
+          <!-- BALAYAGE -->
+          <article class="work-card" role="listitem" tabindex="0">
+            <figure class="work-media skeleton">
+              <img alt="Balayage rubio — ondas suaves en cabello largo"
+                   loading="lazy"
+                   data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
+            </figure>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Balayage</h3>
+                <p class="work-sub">5–6 horas aproximadamente</p>
+              </div>
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
+                 Agendar
+              </a>
+            </div>
+          </article>
 
-      <!-- MECHAS -->
-      <article class="work-card" role="listitem" tabindex="0">
-        <figure class="work-media skeleton">
-          <img alt="Mechas finas — resultado brillante"
-               loading="lazy"
-               data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
-        </figure>
-        <div class="work-overlay">
-          <div class="work-text">
-            <h3 class="work-title">Mechas</h3>
-            <p class="work-sub">1 hora</p>
-          </div>
+          <!-- MECHAS -->
+          <article class="work-card" role="listitem" tabindex="0">
+            <figure class="work-media skeleton">
+              <img alt="Mechas finas — resultado brillante"
+                   loading="lazy"
+                   data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
+            </figure>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Mechas</h3>
+                <p class="work-sub">1 hora</p>
+              </div>
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
+                 Agendar
+              </a>
+            </div>
+          </article>
         </div>
-        <div class="cta-bar">
-          <a class="btn btn--rose btn--block"
-             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-             target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
-             Agendar
-          </a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
+      </div>
+    </section>
 
     <!-- UBICACIÓN -->
     <section id="ubicacion" class="section" aria-labelledby="ubicacion-title">
@@ -196,8 +199,8 @@
         <h2 id="ubicacion-title">Nuestra ubicación</h2>
 
         <address class="address">
-          <p><strong>Dirección:</strong> <span>pasaje Las Garzas 985, Maipú</span></p>
-          <p class="muted">Atención con reserva previa.</p>
+          <p class="muted-strong"><strong>Dirección:</strong> <span>pasaje Las Garzas 985, Maipú</span></p>
+          <p class="muted-strong">Atención con reserva previa.</p>
           <p class="address-links">
             <a class="btn btn--ghost"
                href="https://www.google.com/maps?q=pasaje+Las+Garzas+985,+Maip%C3%BA"
@@ -221,7 +224,6 @@
     </section>
   </main>
 
-   ...
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <small>© <span id="year"></span> Salón Priscy. Todos los derechos reservados.</small>
@@ -229,20 +231,37 @@
   </footer>
 
   <!-- Botón flotante de WhatsApp -->
-  <a class="fab-whatsapp" href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
+  <a class="fab-whatsapp"
+     href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
      target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
     <span aria-hidden="true">💬</span>
   </a>
 
-  <!-- (ya lo tienes) Scripts del año/menú/scroll -->
   <script>
+    // Año automático
     document.getElementById('year').textContent = new Date().getFullYear();
-    /* ...tu código del menú y smooth scroll... */
-  </script>
 
-  <!-- 👇 AQUI VA el bloque nuevo del skeleton/fallbacks -->
-  <script>
-    // Loader skeleton: se remueve al cargar la imagen
+    // Menú responsive accesible
+    const toggle = document.querySelector('.nav-toggle');
+    const menu   = document.getElementById('menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+
+    // Suavizar scroll en enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Skeleton: se quita al cargar la imagen
     document.querySelectorAll('.work-media.skeleton > img').forEach(img => {
       if (img.complete) img.parentElement.classList.remove('skeleton');
       else img.addEventListener('load', () => img.parentElement.classList.remove('skeleton'), { once:true });
