@@ -17,36 +17,24 @@
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Cargador de imágenes con múltiples fallbacks (soporta tildes/NFC/NFD y .jpg/.jpeg) -->
+  <!-- Cargador de imágenes con múltiples fallbacks (.jpg/.jpeg, con/sin tildes, NFC/NFD) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const loadSequential = (img, list) => {
-        // Expande a formas normalizadas (NFC/NFD) y quita duplicados
-        const expand = [];
+        const seen = new Set();
+        const variants = [];
         list.forEach(p => {
-          expand.push(p);
-          const nfd = p.normalize('NFD');
-          const nfc = p.normalize('NFC');
-          if (!expand.includes(nfd)) expand.push(nfd);
-          if (!expand.includes(nfc)) expand.push(nfc);
+          [p, p.normalize('NFD'), p.normalize('NFC')].forEach(v => {
+            if (!seen.has(v)) { seen.add(v); variants.push(v); }
+          });
         });
         let i = 0;
-        const tryNext = () => {
-          if (i >= expand.length) return; // sin suerte
-          const url = expand[i++];
-          img.onerror = tryNext; // si falla, intenta el siguiente
-          img.src = url;         // intenta cargar
-        };
+        const tryNext = () => { if (i < variants.length) { img.onerror = tryNext; img.src = variants[i++]; } };
         tryNext();
       };
-
       document.querySelectorAll('img[data-sources]').forEach(img => {
-        try {
-          const sources = JSON.parse(img.getAttribute('data-sources'));
-          loadSequential(img, sources);
-        } catch (e) {
-          /* si el JSON fallara por alguna razón, no rompemos la página */
-        }
+        try { loadSequential(img, JSON.parse(img.getAttribute('data-sources'))); }
+        catch { /* no rompemos si algo viene raro */ }
       });
     });
   </script>
@@ -56,7 +44,7 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <!-- Solo logo, más grande -->
+      <!-- Solo logo -->
       <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
@@ -114,11 +102,10 @@
 
         <div class="work-grid" role="list">
           <!-- CORTES -->
-          <article class="work-card" role="listitem">
+          <article class="work-card" role="listitem" tabindex="0">
             <figure class="work-media">
-              <img
-                alt="Corte de cabello — terminación pulida en capas largas"
-                data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
+              <img alt="Corte de cabello — terminación pulida en capas largas"
+                   data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -134,20 +121,19 @@
           </article>
 
           <!-- COLORACIÓN E HIDRATACIÓN -->
-          <article class="work-card" role="listitem">
+          <article class="work-card" role="listitem" tabindex="0">
             <figure class="work-media">
-              <img
-                alt="Coloración e hidratación — brillo y suavidad"
-                data-sources='[
-                  "img/coloracion-hidratacion.jpg",
-                  "img/coloracion-hidratacion.jpeg",
-                  "img/coloración e hidratación.jpg",
-                  "img/coloración e hidratación.jpeg"
-                ]'>
+              <img alt="Coloración e hidratación — brillo y suavidad"
+                   data-sources='[
+                    "img/coloracion-hidratacion.jpg",
+                    "img/coloracion-hidratacion.jpeg",
+                    "img/coloración e hidratación.jpg",
+                    "img/coloración e hidratación.jpeg"
+                   ]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
-                <h3 class="work-title">Coloración e hidratación</h3>
+                <h3 class="work-title one-line">Coloración e hidratación</h3>
                 <p class="work-sub">2 horas aproximadamente</p>
               </div>
               <a class="btn btn--rose card-cta"
@@ -159,11 +145,10 @@
           </article>
 
           <!-- BALAYAGE -->
-          <article class="work-card" role="listitem">
+          <article class="work-card" role="listitem" tabindex="0">
             <figure class="work-media">
-              <img
-                alt="Balayage rubio — ondas suaves en cabello largo"
-                data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
+              <img alt="Balayage rubio — ondas suaves en cabello largo"
+                   data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -179,11 +164,10 @@
           </article>
 
           <!-- MECHAS -->
-          <article class="work-card" role="listitem">
+          <article class="work-card" role="listitem" tabindex="0">
             <figure class="work-media">
-              <img
-                alt="Mechas finas — resultado brillante"
-                data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
+              <img alt="Mechas finas — resultado brillante"
+                   data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -201,7 +185,7 @@
       </div>
     </section>
 
-    <!-- UBICACIÓN (Google Maps iframe) -->
+    <!-- UBICACIÓN -->
     <section id="ubicacion" class="section" aria-labelledby="ubicacion-title">
       <div class="container">
         <h2 id="ubicacion-title">Nuestra ubicación</h2>
@@ -271,4 +255,3 @@
   </script>
 </body>
 </html>
-
