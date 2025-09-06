@@ -16,27 +16,13 @@
 
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Pequeño helper para fallbacks de imagen -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('img[data-fallback]').forEach(img => {
-        img.addEventListener('error', () => {
-          if (!img.dataset.tried) {
-            img.dataset.tried = '1';
-            img.src = img.dataset.fallback;
-          }
-        }, { once: true });
-      });
-    });
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <!-- Solo logo, más grande y centrado vertical -->
+      <!-- Solo logo, más grande -->
       <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
@@ -68,9 +54,10 @@
         <h1><span class="highlight">Color y corte profesional</span> en tu barrio</h1>
         <p class="lead">Reserva por WhatsApp en 3 pasos. Atención cercana, resultados de alto nivel.</p>
         <div class="cta-row">
-          <a class="btn btn--whatsapp btn--lg"
-             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%0ANombre%3A%20%5Btu%20nombre%5D."
-             target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
+          <a
+            class="btn btn--whatsapp btn--lg"
+            href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%0ANombre%3A%20%5Btu%20nombre%5D."
+            target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
             Agendar por WhatsApp
           </a>
           <a class="btn btn--instagram btn--lg"
@@ -97,8 +84,8 @@
             <figure class="work-media">
               <img loading="lazy"
                    src="img/cortes.jpg"
-                   data-fallback="img/corte.jpeg"
-                   alt="Corte de cabello — terminación pulida en capas largas">
+                   alt="Corte de cabello — terminación pulida en capas largas"
+                   onerror="this.onerror=null; this.src='img/corte.jpeg';">
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -118,8 +105,8 @@
             <figure class="work-media">
               <img loading="lazy"
                    src="img/coloracion-hidratacion.jpg"
-                   data-fallback="img/coloraci%C3%B3n%20e%20hidrataci%C3%B3n.jpeg"
-                   alt="Coloración e hidratación — brillo y suavidad">
+                   alt="Coloración e hidratación — brillo y suavidad"
+                   onerror="this.onerror=null; this.src='img/coloraci%C3%B3n%20e%20hidrataci%C3%B3n.jpeg';">
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -139,8 +126,8 @@
             <figure class="work-media">
               <img loading="lazy"
                    src="img/balayage.jpg"
-                   data-fallback="img/balayage.jpeg"
-                   alt="Balayage rubio — ondas suaves en cabello largo">
+                   alt="Balayage rubio — ondas suaves en cabello largo"
+                   onerror="this.onerror=null; this.src='img/balayage.jpeg';">
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -160,8 +147,8 @@
             <figure class="work-media">
               <img loading="lazy"
                    src="img/mechas.jpg"
-                   data-fallback="img/mechas.jpeg"
-                   alt="Mechas finas — resultado brillante">
+                   alt="Mechas finas — resultado brillante"
+                   onerror="this.onerror=null; this.src='img/mechas.jpeg';">
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -182,7 +169,7 @@
     <!-- UBICACIÓN (Google Maps iframe) -->
     <section id="ubicacion" class="section" aria-labelledby="ubicacion-title">
       <div class="container">
-        <h2 id="ubicacion-title">Dónde estamos</h2>
+        <h2 id="ubicacion-title">Nuestra ubicación</h2>
 
         <address class="address">
           <p><strong>Dirección:</strong> <span>pasaje Las Garzas 985, Maipú</span></p>
@@ -216,7 +203,7 @@
     </div>
   </footer>
 
-  <!-- Botón flotante de WhatsApp (lo mantenemos) -->
+  <!-- Botón flotante de WhatsApp -->
   <a class="fab-whatsapp"
      href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
      target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
