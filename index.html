@@ -9,7 +9,7 @@
   <meta name="color-scheme" content="light">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
 
-  <!-- Tipografías (Manrope + Fraunces) -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Fallbacks de imagen (.jpg/.jpeg, con/sin tildes, NFC/NFD) -->
+  <!-- Fallbacks de imagen (maneja .jpg/.jpeg con/sin tildes, NFC/NFD) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const loadSequential = (img, list) => {
@@ -40,7 +40,7 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <!-- Solo logo (grande) -->
+      <!-- Solo logo agrandado -->
       <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
@@ -98,29 +98,27 @@
 
         <div class="work-grid" role="list">
           <!-- CORTES -->
-          <article class="work-card" role="listitem" tabindex="0">
+          <article class="work-card" role="listitem">
             <figure class="work-media skeleton">
               <img alt="Corte de cabello — terminación pulida en capas largas"
                    loading="lazy"
                    data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
             </figure>
             <div class="work-overlay">
-              <div class="work-text">
-                <h3 class="work-title">Cortes</h3>
-                <p class="work-sub">20 a 30 minutos</p>
-              </div>
+              <h3 class="work-title">Cortes</h3>
+              <p class="work-sub">20 a 30 minutos</p>
             </div>
             <div class="cta-bar">
               <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
-                 Agendar
+                Agendar
               </a>
             </div>
           </article>
 
           <!-- COLORACIÓN E HIDRATACIÓN -->
-          <article class="work-card" role="listitem" tabindex="0">
+          <article class="work-card" role="listitem">
             <figure class="work-media skeleton">
               <img alt="Coloración e hidratación — brillo y suavidad"
                    loading="lazy"
@@ -132,60 +130,54 @@
                    ]'>
             </figure>
             <div class="work-overlay">
-              <div class="work-text">
-                <h3 class="work-title one-line">Coloración e hidratación</h3>
-                <p class="work-sub">2 horas aproximadamente</p>
-              </div>
+              <h3 class="work-title one-line">Coloración e hidratación</h3>
+              <p class="work-sub">2 horas aproximadamente</p>
             </div>
             <div class="cta-bar">
               <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
-                 Agendar
+                Agendar
               </a>
             </div>
           </article>
 
           <!-- BALAYAGE -->
-          <article class="work-card" role="listitem" tabindex="0">
+          <article class="work-card" role="listitem">
             <figure class="work-media skeleton">
               <img alt="Balayage rubio — ondas suaves en cabello largo"
                    loading="lazy"
                    data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
             </figure>
             <div class="work-overlay">
-              <div class="work-text">
-                <h3 class="work-title">Balayage</h3>
-                <p class="work-sub">5–6 horas aproximadamente</p>
-              </div>
+              <h3 class="work-title">Balayage</h3>
+              <p class="work-sub">5–6 horas aproximadamente</p>
             </div>
             <div class="cta-bar">
               <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
-                 Agendar
+                Agendar
               </a>
             </div>
           </article>
 
           <!-- MECHAS -->
-          <article class="work-card" role="listitem" tabindex="0">
+          <article class="work-card" role="listitem">
             <figure class="work-media skeleton">
               <img alt="Mechas finas — resultado brillante"
                    loading="lazy"
                    data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
             </figure>
             <div class="work-overlay">
-              <div class="work-text">
-                <h3 class="work-title">Mechas</h3>
-                <p class="work-sub">1 hora</p>
-              </div>
+              <h3 class="work-title">Mechas</h3>
+              <p class="work-sub">1 hora</p>
             </div>
             <div class="cta-bar">
               <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
-                 Agendar
+                Agendar
               </a>
             </div>
           </article>
@@ -269,4 +261,3 @@
   </script>
 </body>
 </html>
-
