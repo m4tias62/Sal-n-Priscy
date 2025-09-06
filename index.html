@@ -21,20 +21,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const loadSequential = (img, list) => {
-        const seen = new Set();
-        const variants = [];
-        list.forEach(p => {
-          [p, p.normalize('NFD'), p.normalize('NFC')].forEach(v => {
-            if (!seen.has(v)) { seen.add(v); variants.push(v); }
-          });
-        });
-        let i = 0;
-        const tryNext = () => { if (i < variants.length) { img.onerror = tryNext; img.src = variants[i++]; } };
+        const seen = new Set(), variants = [];
+        list.forEach(p => [p, p.normalize('NFD'), p.normalize('NFC')].forEach(v => { if(!seen.has(v)){ seen.add(v); variants.push(v);} }));
+        let i = 0; const tryNext = () => { if (i < variants.length){ img.onerror = tryNext; img.src = variants[i++]; } };
         tryNext();
       };
       document.querySelectorAll('img[data-sources]').forEach(img => {
-        try { loadSequential(img, JSON.parse(img.getAttribute('data-sources'))); }
-        catch { /* no rompemos si algo viene raro */ }
+        try { loadSequential(img, JSON.parse(img.getAttribute('data-sources'))); } catch {}
       });
     });
   </script>
@@ -44,7 +37,6 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <!-- Solo logo -->
       <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
@@ -112,7 +104,9 @@
                 <h3 class="work-title">Cortes</h3>
                 <p class="work-sub">20 a 30 minutos</p>
               </div>
-              <a class="btn btn--rose card-cta"
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
                  Agendar
@@ -136,7 +130,9 @@
                 <h3 class="work-title one-line">Coloración e hidratación</h3>
                 <p class="work-sub">2 horas aproximadamente</p>
               </div>
-              <a class="btn btn--rose card-cta"
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
                  Agendar
@@ -155,7 +151,9 @@
                 <h3 class="work-title">Balayage</h3>
                 <p class="work-sub">5–6 horas aproximadamente</p>
               </div>
-              <a class="btn btn--rose card-cta"
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
                  Agendar
@@ -174,7 +172,9 @@
                 <h3 class="work-title">Mechas</h3>
                 <p class="work-sub">1 hora</p>
               </div>
-              <a class="btn btn--rose card-cta"
+            </div>
+            <div class="cta-bar">
+              <a class="btn btn--rose btn--block"
                  href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
                  target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
                  Agendar
