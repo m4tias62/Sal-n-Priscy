@@ -16,6 +16,40 @@
 
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Cargador de imágenes con múltiples fallbacks (soporta tildes/NFC/NFD y .jpg/.jpeg) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loadSequential = (img, list) => {
+        // Expande a formas normalizadas (NFC/NFD) y quita duplicados
+        const expand = [];
+        list.forEach(p => {
+          expand.push(p);
+          const nfd = p.normalize('NFD');
+          const nfc = p.normalize('NFC');
+          if (!expand.includes(nfd)) expand.push(nfd);
+          if (!expand.includes(nfc)) expand.push(nfc);
+        });
+        let i = 0;
+        const tryNext = () => {
+          if (i >= expand.length) return; // sin suerte
+          const url = expand[i++];
+          img.onerror = tryNext; // si falla, intenta el siguiente
+          img.src = url;         // intenta cargar
+        };
+        tryNext();
+      };
+
+      document.querySelectorAll('img[data-sources]').forEach(img => {
+        try {
+          const sources = JSON.parse(img.getAttribute('data-sources'));
+          loadSequential(img, sources);
+        } catch (e) {
+          /* si el JSON fallara por alguna razón, no rompemos la página */
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -82,10 +116,9 @@
           <!-- CORTES -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy"
-                   src="img/cortes.jpg"
-                   alt="Corte de cabello — terminación pulida en capas largas"
-                   onerror="this.onerror=null; this.src='img/corte.jpeg';">
+              <img
+                alt="Corte de cabello — terminación pulida en capas largas"
+                data-sources='["img/cortes.jpg","img/corte.jpg","img/cortes.jpeg","img/corte.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -103,10 +136,14 @@
           <!-- COLORACIÓN E HIDRATACIÓN -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy"
-                   src="img/coloracion-hidratacion.jpg"
-                   alt="Coloración e hidratación — brillo y suavidad"
-                   onerror="this.onerror=null; this.src='img/coloraci%C3%B3n%20e%20hidrataci%C3%B3n.jpeg';">
+              <img
+                alt="Coloración e hidratación — brillo y suavidad"
+                data-sources='[
+                  "img/coloracion-hidratacion.jpg",
+                  "img/coloracion-hidratacion.jpeg",
+                  "img/coloración e hidratación.jpg",
+                  "img/coloración e hidratación.jpeg"
+                ]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -124,10 +161,9 @@
           <!-- BALAYAGE -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy"
-                   src="img/balayage.jpg"
-                   alt="Balayage rubio — ondas suaves en cabello largo"
-                   onerror="this.onerror=null; this.src='img/balayage.jpeg';">
+              <img
+                alt="Balayage rubio — ondas suaves en cabello largo"
+                data-sources='["img/balayage.jpg","img/balayage.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -145,10 +181,9 @@
           <!-- MECHAS -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy"
-                   src="img/mechas.jpg"
-                   alt="Mechas finas — resultado brillante"
-                   onerror="this.onerror=null; this.src='img/mechas.jpeg';">
+              <img
+                alt="Mechas finas — resultado brillante"
+                data-sources='["img/mechas.jpg","img/mechas.jpeg"]'>
             </figure>
             <div class="work-overlay">
               <div class="work-text">
@@ -236,3 +271,4 @@
   </script>
 </body>
 </html>
+
