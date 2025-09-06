@@ -221,6 +221,7 @@
     </section>
   </main>
 
+   ...
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <small>© <span id="year"></span> Salón Priscy. Todos los derechos reservados.</small>
@@ -228,35 +229,25 @@
   </footer>
 
   <!-- Botón flotante de WhatsApp -->
-  <a class="fab-whatsapp"
-     href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
+  <a class="fab-whatsapp" href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
      target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
     <span aria-hidden="true">💬</span>
   </a>
 
+  <!-- (ya lo tienes) Scripts del año/menú/scroll -->
   <script>
-    // Año automático
     document.getElementById('year').textContent = new Date().getFullYear();
+    /* ...tu código del menú y smooth scroll... */
+  </script>
 
-    // Menú responsive accesible
-    const toggle = document.querySelector('.nav-toggle');
-    const menu   = document.getElementById('menu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        menu.classList.toggle('open');
-      });
-    }
-
-    // Suavizar scroll en enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-      });
+  <!-- 👇 AQUI VA el bloque nuevo del skeleton/fallbacks -->
+  <script>
+    // Loader skeleton: se remueve al cargar la imagen
+    document.querySelectorAll('.work-media.skeleton > img').forEach(img => {
+      if (img.complete) img.parentElement.classList.remove('skeleton');
+      else img.addEventListener('load', () => img.parentElement.classList.remove('skeleton'), { once:true });
     });
   </script>
 </body>
 </html>
+
