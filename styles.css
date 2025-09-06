@@ -1,4 +1,5 @@
-/* --- Base / tokens --- */
+/* Salón Priscy — diseño accesible, morados/rosas, Manrope + Fraunces */
+
 :root{
   --text: #1f1f25;
   --muted: #6b6b74;
@@ -9,6 +10,7 @@
   --pink-500: #ec4899;
 
   --accent: linear-gradient(135deg, var(--fuchsia-600), var(--pink-500));
+  --heading-purple: #4c1d95; /* morado con contraste AA/AAA en fondo blanco */
 
   --surface: #ffffff;
   --surface-2: #f6f0ff;
@@ -26,9 +28,16 @@
 
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:var(--font-sans);line-height:1.6;color:var(--text);background:#fff}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  line-height:1.6;
+  color:var(--text);
+  background:#fff;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
 
-/* Layout util */
 .container{max-width:1100px;margin-inline:auto;padding:0 16px}
 
 /* Skip link */
@@ -36,7 +45,7 @@ body{margin:0;font-family:var(--font-sans);line-height:1.6;color:var(--text);bac
 .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:10px 14px;background:#000;color:#fff;z-index:999;border-radius:10px}
 
 /* Header + Nav pills */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
 .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:calc(var(--brand-size) + 18px)}
 .brand{display:flex;align-items:center;text-decoration:none}
 .brand img{width:var(--brand-size);height:auto;display:block}
@@ -45,12 +54,12 @@ body{margin:0;font-family:var(--font-sans);line-height:1.6;color:var(--text);bac
 .nav-toggle{display:none;background:transparent;border:2px solid #ddd;border-radius:10px;padding:8px 10px;min-height:44px}
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:12px;align-items:center}
 
-/* Píldoras neutrales (disabled-like) -> rosa al hover/foco */
+/* Píldoras neutrales -> rosa en hover/foco */
 .nav-pill{
   display:inline-flex;align-items:center;justify-content:center;
   padding:10px 14px;min-height:40px;border-radius:14px;
   text-decoration:none;font-weight:800;color:#1f1f25;
-  background:#fff;border:1.5px solid #e6e0f5; /* estado neutro */
+  background:#fff;border:1.5px solid #e6e0f5;  /* estado calmo */
   box-shadow:0 2px 10px rgba(0,0,0,.04);
   transition:all .2s ease;
 }
@@ -67,12 +76,12 @@ h1{font-weight:900}
 h2{font-weight:800}
 h3{font-weight:800}
 
-/* Hero decor */
+/* Hero */
 .hero{position:relative;overflow:hidden;padding:84px 0 72px;background:
   radial-gradient(1200px 600px at 80% -20%, rgba(207,76,159,.25), transparent 60%),
   radial-gradient(900px 500px at 10% 0%, rgba(96,24,165,.22), transparent 55%),
   linear-gradient(180deg,#fff,#fff)}
-.hero__bg::before,.hero__bg::after{content:"";position:absolute;inset:auto;pointer-events:none;border-radius:50%;filter:blur(50px);opacity:.5;mix-blend-mode:multiply;animation:float 12s ease-in-out infinite}
+.hero__bg::before,.hero__bg::after{content:"";position:absolute;border-radius:50%;filter:blur(50px);opacity:.5;mix-blend-mode:multiply;animation:float 12s ease-in-out infinite}
 .hero__bg::before{width:420px;height:420px;left:-80px;top:-60px;background:radial-gradient(circle at 30% 30%,#d946ef,#7c3aed)}
 .hero__bg::after{width:520px;height:520px;right:-120px;top:-40px;background:radial-gradient(circle at 70% 70%,#ec4899,#6b21a8);animation-duration:14s}
 @media (prefers-reduced-motion:reduce){.hero__bg::before,.hero__bg::after{animation:none}}
@@ -84,10 +93,14 @@ h3{font-weight:800}
 
 /* Sections */
 .section{padding:64px 0}
-.section h2{font-size:clamp(24px,3.4vw,34px);line-height:1.2;margin:0 0 6px}
+.section h2{
+  font-size:clamp(24px,3.4vw,34px);
+  line-height:1.2;margin:0 0 6px;
+  color:var(--heading-purple); /* morado accesible */
+}
 .muted{color:var(--muted)}
 
-/* --- Cards estilo "glass/dark" --- */
+/* --- Cards estilo glass/dark --- */
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
 .work-card{
   position:relative;border-radius:24px;overflow:hidden;
@@ -108,7 +121,7 @@ h3{font-weight:800}
 .work-title{margin:0;font-size:20px;line-height:1.15;font-weight:800}
 .work-sub{margin:4px 0 0;font-size:14px;color:rgba(255,255,255,.85)}
 
-/* CTA aparece en hover/focus; siempre visible en táctiles */
+/* CTA aparece en hover/foco; siempre visible en táctiles */
 .card-cta{
   white-space:nowrap;
   padding:10px 14px;border-radius:14px;border:2px solid transparent;
@@ -129,6 +142,7 @@ h3{font-weight:800}
 .btn--instagram:hover{background:#faf5ff}
 .btn--whatsapp{background:#128C7E;color:#fff}
 .btn--whatsapp:hover{filter:brightness(.98)}
+.btn--rose{background:linear-gradient(135deg, var(--pink-500), var(--fuchsia-600));color:#fff;border-color:transparent;box-shadow:var(--shadow-2)}
 .btn:focus{outline:3px solid #6b21a8;outline-offset:3px}
 
 /* Ubicación / mapa */
