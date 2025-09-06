@@ -17,38 +17,42 @@
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- estilos mínimos de mapa (opcional mover a styles.css) -->
-  <style>
-    .address{font-style:normal;margin-bottom:12px}
-    .address-links{display:flex;gap:10px;flex-wrap:wrap}
-    .map-wrap{aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid #eee;box-shadow:0 6px 24px rgba(68,16,105,.18)}
-    .map-wrap iframe{width:100%;height:100%;border:0;display:block}
-    @media (max-width:640px){.map-wrap{aspect-ratio:4/3}}
-  </style>
+  <!-- Pequeño helper para fallbacks de imagen -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img[data-fallback]').forEach(img => {
+        img.addEventListener('error', () => {
+          if (!img.dataset.tried) {
+            img.dataset.tried = '1';
+            img.src = img.dataset.fallback;
+          }
+        }, { once: true });
+      });
+    });
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <!-- Solo logo -->
-      <a class="brand" href="#hero">
+      <!-- Solo logo, más grande y centrado vertical -->
+      <a class="brand" href="#hero" aria-label="Ir al inicio">
         <img src="logo.svg" alt="Salón Priscy">
       </a>
 
       <nav class="main-nav" aria-label="principal">
         <button class="nav-toggle" aria-controls="menu" aria-expanded="false">
-          <span class="sr-only">Abrir menú</span>
-          ☰
+          <span class="sr-only">Abrir menú</span> ☰
         </button>
         <ul id="menu" class="nav-list">
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a class="nav-pill" href="#servicios">Servicios</a></li>
+          <li><a class="nav-pill" href="#ubicacion">Ubicación</a></li>
           <li>
-            <a
-              href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20una%20hora."
-              class="btn btn--sm btn--accent" target="_blank" rel="noopener">
-              Reservar
+            <a class="nav-pill"
+               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quiero%20agendar%20una%20hora."
+               target="_blank" rel="noopener">
+              Agendar
             </a>
           </li>
         </ul>
@@ -64,10 +68,9 @@
         <h1><span class="highlight">Color y corte profesional</span> en tu barrio</h1>
         <p class="lead">Reserva por WhatsApp en 3 pasos. Atención cercana, resultados de alto nivel.</p>
         <div class="cta-row">
-          <a
-            class="btn btn--whatsapp btn--lg"
-            href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%0ANombre%3A%20%5Btu%20nombre%5D."
-            target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
+          <a class="btn btn--whatsapp btn--lg"
+             href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%0ANombre%3A%20%5Btu%20nombre%5D."
+             target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
             Agendar por WhatsApp
           </a>
           <a class="btn btn--instagram btn--lg"
@@ -79,7 +82,7 @@
       </div>
     </section>
 
-    <!-- SERVICIOS + TRABAJOS (unificados) -->
+    <!-- SERVICIOS + TRABAJOS -->
     <section id="servicios" class="section" aria-labelledby="servicios-title">
       <div class="container">
         <h2 id="servicios-title">Servicios y trabajos</h2>
@@ -92,65 +95,85 @@
           <!-- CORTES -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy" src="img/cortes.jpg" alt="Corte de cabello — terminación pulida en capas largas">
+              <img loading="lazy"
+                   src="img/cortes.jpg"
+                   data-fallback="img/corte.jpeg"
+                   alt="Corte de cabello — terminación pulida en capas largas">
             </figure>
-            <div class="work-card__meta">
-              <h3 class="work-card__title">Cortes</h3>
-              <p class="work-card__desc">20 a 30 minutos</p>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Cortes</h3>
+                <p class="work-sub">20 a 30 minutos</p>
+              </div>
+              <a class="btn btn--rose card-cta"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
+                 Agendar
+              </a>
             </div>
-            <a class="btn btn--rose card-cta"
-               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Cortes.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-               target="_blank" rel="noopener" aria-label="Agendar cortes por WhatsApp">
-               Agendar
-            </a>
           </article>
 
           <!-- COLORACIÓN E HIDRATACIÓN -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy" src="img/coloracion-hidratacion.jpg" alt="Coloración e hidratación — brillo y suavidad">
+              <img loading="lazy"
+                   src="img/coloracion-hidratacion.jpg"
+                   data-fallback="img/coloraci%C3%B3n%20e%20hidrataci%C3%B3n.jpeg"
+                   alt="Coloración e hidratación — brillo y suavidad">
             </figure>
-            <div class="work-card__meta">
-              <h3 class="work-card__title">Coloración e hidratación</h3>
-              <p class="work-card__desc">2 horas aproximadamente</p>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Coloración e hidratación</h3>
+                <p class="work-sub">2 horas aproximadamente</p>
+              </div>
+              <a class="btn btn--rose card-cta"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
+                 Agendar
+              </a>
             </div>
-            <a class="btn btn--rose card-cta"
-               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Coloraci%C3%B3n%20e%20hidrataci%C3%B3n%20%282%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-               target="_blank" rel="noopener" aria-label="Agendar coloración e hidratación por WhatsApp">
-               Agendar
-            </a>
           </article>
 
           <!-- BALAYAGE -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy" src="img/balayage.jpg" alt="Balayage rubio — ondas suaves en cabello largo">
+              <img loading="lazy"
+                   src="img/balayage.jpg"
+                   data-fallback="img/balayage.jpeg"
+                   alt="Balayage rubio — ondas suaves en cabello largo">
             </figure>
-            <div class="work-card__meta">
-              <h3 class="work-card__title">Balayage</h3>
-              <p class="work-card__desc">5–6 horas aproximadamente</p>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Balayage</h3>
+                <p class="work-sub">5–6 horas aproximadamente</p>
+              </div>
+              <a class="btn btn--rose card-cta"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
+                 Agendar
+              </a>
             </div>
-            <a class="btn btn--rose card-cta"
-               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Balayage%20%285-6%20horas%20aprox%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-               target="_blank" rel="noopener" aria-label="Agendar balayage por WhatsApp">
-               Agendar
-            </a>
           </article>
 
           <!-- MECHAS -->
           <article class="work-card" role="listitem">
             <figure class="work-media">
-              <img loading="lazy" src="img/mechas.jpg" alt="Mechas finas — resultado brillante">
+              <img loading="lazy"
+                   src="img/mechas.jpg"
+                   data-fallback="img/mechas.jpeg"
+                   alt="Mechas finas — resultado brillante">
             </figure>
-            <div class="work-card__meta">
-              <h3 class="work-card__title">Mechas</h3>
-              <p class="work-card__desc">1 hora</p>
+            <div class="work-overlay">
+              <div class="work-text">
+                <h3 class="work-title">Mechas</h3>
+                <p class="work-sub">1 hora</p>
+              </div>
+              <a class="btn btn--rose card-cta"
+                 href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
+                 target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
+                 Agendar
+              </a>
             </div>
-            <a class="btn btn--rose card-cta"
-               href="https://wa.me/56986768075?text=Hola%20Priscy%2C%0AQuiero%20agendar%3A%20Mechas%20%281%20hora%29.%0AFecha%3A%20%5Bfecha%5D%0AHora%3A%20%5Bhora%5D%0ANombre%3A%20%5Btu%20nombre%5D."
-               target="_blank" rel="noopener" aria-label="Agendar mechas por WhatsApp">
-               Agendar
-            </a>
           </article>
         </div>
       </div>
@@ -185,30 +208,6 @@
         </div>
       </div>
     </section>
-
-    <!-- RESERVAR -->
-    <section id="reservar" class="section section--accent" aria-labelledby="reservar-title">
-      <div class="container reservar-inner">
-        <div class="reservar-copy">
-          <h2 id="reservar-title">Reserva por WhatsApp</h2>
-          <ol class="steps">
-            <li>Elige el servicio.</li>
-            <li>Indica fecha y horario que te acomoden.</li>
-            <li>Te confirmamos en minutos.</li>
-          </ol>
-          <a
-            class="btn btn--whatsapp btn--xl"
-            href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar%20%5Bservicio%5D%20para%20%5Bfecha%5D%20a%20las%20%5Bhora%5D.%0ANombre%3A%20%5Btu%20nombre%5D."
-            target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
-            Agendar ahora en WhatsApp
-          </a>
-        </div>
-        <div class="reservar-visual" aria-hidden="true">
-          <div class="blob b1"></div>
-          <div class="blob b2"></div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -217,7 +216,7 @@
     </div>
   </footer>
 
-  <!-- Botón flotante de WhatsApp -->
+  <!-- Botón flotante de WhatsApp (lo mantenemos) -->
   <a class="fab-whatsapp"
      href="https://wa.me/56986768075?text=Hola%20Priscy%2C%20quisiera%20agendar."
      target="_blank" rel="noopener" aria-label="Agendar por WhatsApp (flotante)">
@@ -230,11 +229,11 @@
 
     // Menú responsive accesible
     const toggle = document.querySelector('.nav-toggle');
-    const menu = document.getElementById('menu');
+    const menu   = document.getElementById('menu');
     if (toggle && menu) {
       toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
-        toggle.setAttribute('aria-expanded', !expanded);
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
         menu.classList.toggle('open');
       });
     }
@@ -244,13 +243,9 @@
       a.addEventListener('click', e => {
         const id = a.getAttribute('href').slice(1);
         const target = document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
   </script>
 </body>
 </html>
-
